@@ -1,0 +1,10 @@
+{
+    "name": "astroselling/laravel-cloudwatch-logging",
+    "authors": [
+        {
+            "name": "Astronselling",
+            "email": "soporte@astroselling.com"
+        }
+    ],
+    "require": {}
+}
