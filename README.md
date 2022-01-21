@@ -55,8 +55,9 @@ En el archivo de configuración `logging.php` agregar los canales que envían lo
 Como cualquier log de Monolog:
 `Log::channel('canal_de_cloudwatch)->debug('Este es el mensaje', $array_con_data);`
 
-Los logs se alamcenarán en Cloudwatch en un Log Group nombreado de la siguiente forma:
+Los logs se almacenarán en Cloudwatch en un Log Group nombrado de la siguiente forma:
 `nombre_de_la_aplicación-entorno`
+
 Por ejemplo:
 `atroselling3.0-production`, `astroselling3.0-local` o `TitanHub-staging`.
 
