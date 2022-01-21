@@ -1,6 +1,6 @@
 {
     "name": "astroselling/laravel-cloudwatch-logging",
-    "description": "Monogol logger for AWS Cloudwatch.",
+    "description": "Monolog logger for AWS Cloudwatch.",
     "keywords": ["log", "logging", "aws", "cloudwatch", "laravel", "lumen"],
     "type": "library",
     "require": {
