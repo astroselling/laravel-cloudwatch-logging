@@ -1,11 +1,7 @@
 {
     "name": "astroselling/laravel-cloudwatch-logging",
-    "authors": [
-        {
-            "name": "Astronselling",
-            "email": "soporte@astroselling.com"
-        }
-    ],
+    "description": "Monogol logger for AWS Cloudwatch.",
+    "keywords": ["log", "logging", "aws", "cloudwatch", "laravel", "lumen"],
     "type": "library",
     "require": {
        "php": ">=7.4",
@@ -13,7 +9,6 @@
        "aws/aws-sdk-php": ">=3.209",
        "maxbanton/cwh": ">=v2.0"
     },
-    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [
         {
