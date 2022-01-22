@@ -1,5 +1,7 @@
 # Cloudwatch logging para Laravel & Lumen
 
+Basado en https://stackoverflow.com/questions/50814388/laravel-5-6-aws-cloudwatch-log/51790656#51790656
+
 ## Instalación
 En composer.json, agregar el repositorio y la dependencia.
 
