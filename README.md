@@ -15,15 +15,16 @@ Dependencia:
         "astroselling/laravel-cloudwatch-logging": "^0.1",
 ```
 
-En el .env, agregar credenciales para AWS y la configuración para los logs "batch size" y "log level":
+En el .env, agregar credenciales para AWS y la configuración para los logs "batch size" y "log level". El batch size se utiliza para que no se envíen todos los logs de a uno, sino en batches para mejorar la performance.
+
 ```
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=sa-east-1
 
-CLOUDWATCH_BATCH_SIZE=3
+CLOUDWATCH_BATCH_SIZE=1000
 CLOUDWATCH_LOG_LEVEL=debug
-CLOUDWATCH_LOG_RETENTION=14
+CLOUDWATCH_LOG_RETENTION=7
 ```
 
 En el archivo de configuración `logging.php` agregar los canales que envían los logs a cloudwatch:
@@ -44,7 +45,7 @@ En el archivo de configuración `logging.php` agregar los canales que envían lo
             'streamName' => 'app_default',
             'retention' => env('CLOUDWATCH_LOG_RETENTION', 14),
             'level' => env('CLOUDWATCH_LOG_LEVEL', env('LOG_LEVEL', 'debug')),
-            'batch_size' => env('CLOUDWATCH_BATCH_SIZE', 1),
+            'batch_size' => env('CLOUDWATCH_BATCH_SIZE', 1000),
         ],
 ```
 
