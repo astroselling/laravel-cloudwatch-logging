@@ -3,8 +3,10 @@
 namespace Astroselling\LaravelCloudwatchLogging;
 
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
-use Maxbanton\Cwh\Handler\CloudWatch;
+use Monolog\Formatter\JsonFormatter;
+use Monolog\Level;
 use Monolog\Logger;
+use PhpNexus\Cwh\Handler\CloudWatch;
 
 class CloudWatchLoggerFactory
 {
@@ -14,11 +16,11 @@ class CloudWatchLoggerFactory
      * @param  array  $config
      * @return \Monolog\Logger
      */
-    public function __invoke(array $config)
+    public function __invoke(array $config): Logger
     {
-        $sdkParams = $config["sdk"];
-        $tags = $config["tags"] ?? [];
-        $name = $config["name"] ?? 'cloudwatch';
+        $sdkParams = $config['sdk'];
+        $tags = $config['tags'] ?? [];
+        $name = $config['name'] ?? 'cloudwatch';
 
         // Instantiate AWS SDK CloudWatch Logs Client
         $client = new CloudWatchLogsClient($sdkParams);
@@ -27,12 +29,12 @@ class CloudWatchLoggerFactory
         $groupName = str_replace(' ', '', config('app.name') . '-' . config('app.env'));
 
         // Log stream name, will be created if none
-        $streamName = $config["streamName"];
+        $streamName = $config['streamName'];
 
         // Days to keep logs, 14 by default. Set to `null` to allow indefinite retention.
-        $retentionDays = $config["retention"];
+        $retentionDays = $config['retention'];
 
-        $level = $config["level"] ?? 'debug';
+        $level = $config['level'] ?? Level::Info;
 
         // Instantiate handler (tags are optional)
         $handler = new CloudWatch(
@@ -42,12 +44,10 @@ class CloudWatchLoggerFactory
             (int) $retentionDays,
             $config['batch_size'],
             $tags,
-            $level
+            $level,
         );
 
-        $handler->setFormatter(new CloudWatchFormatter(
-            '%context%'
-        ));
+        $handler->setFormatter(new JsonFormatter());
 
         // Create a log channel
         $logger = new Logger($name);

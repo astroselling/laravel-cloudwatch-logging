@@ -4,10 +4,10 @@
     "keywords": ["log", "logging", "aws", "cloudwatch", "laravel", "lumen"],
     "type": "library",
     "require": {
-       "php": ">=7.4",
-       "monolog/monolog": ">=1.3",
-       "aws/aws-sdk-php": ">=3.209",
-       "maxbanton/cwh": ">=v2.0"
+       "php": ">=8.3",
+       "monolog/monolog": "^3.0",
+       "aws/aws-sdk-php": "^3.3",
+       "phpnexus/cwh": "^3.0"
     },
     "license": "MIT",
     "authors": [
